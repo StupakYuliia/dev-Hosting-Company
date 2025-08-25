@@ -1,8 +1,64 @@
 header{
-	height: 7vh;
-	padding: 15px 0;
-	background: #222;
-	a {
-		color: #fff;
+	margin: 42px 0 80px;
+
+	.container {
+		display: flex;
+		gap: 66px;
+	}
+
+	.header-nav {
+		display: grid;
+		grid-template-columns: 3fr 1fr 1.5fr 3fr 1.5fr 2fr;
+		align-items: center;
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 24px;
+			right: 178px;
+			background-color: #DAD8D8;
+			width: 1px;
+			height: 19px;
+		}
+
+		&__link {
+			& > span {
+				position: relative;
+				display: inline-block;
+
+				&::after{
+					content: "";
+				position: absolute;
+				width: 72px;
+				height: 2px;
+				bottom: 0;
+				left: 50%;
+				transform: translate(-50%) scale(0);
+				background-color: $red-accent;
+				transition: 0.3s ease-in-out;
+				}
+			}
+
+			&:hover {
+				&> span {
+					&::after {
+						transform: translate(-50%) scale(1);
+					}
+				}
+			}
+		}
+
+		a[href="tel: +2349067322844"] {
+			display: flex;
+			align-items: center;
+
+			.icon-svg {
+				width: 20px;
+				height: 20px;
+				stroke: $red-accent;
+				color: transparent;
+			}
+		}
 	}
 }
