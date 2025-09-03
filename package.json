@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "browser-sync": "^2.27.11",
     "css-mqpacker": "^7.0.0",
     "del": "^3.0.0",
     "gulp": "^4.0.2",
@@ -23,7 +22,21 @@
     "gulp-uglify": "^3.0.2",
     "gulp.spritesmith": "^6.13.0",
     "merge-stream": "^2.0.0",
-    "sass": "^1.57.1",
-    "vinyl-buffer": "^1.0.1"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "sass": "^1.57.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.27.1",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "babelify": "^10.0.0",
+    "browser-sync": "^3.0.4",
+    "browserify": "^17.0.1",
+    "gulp-babel": "^8.0.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   }
 }

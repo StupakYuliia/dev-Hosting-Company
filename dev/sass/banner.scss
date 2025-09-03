@@ -1,0 +1,104 @@
+.banner {
+	margin-bottom: 80px;
+	.container {
+		display: flex;
+		gap: 54px;
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 390px;
+    		right: -12px;
+			width: 72px;
+    		height: 72px;
+			background-image: url(./assets/img/triangle-big.png);
+			z-index: 1;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 62px;
+			right: -12px;
+			width: 40px;
+			height: 40px;
+			background-image: url(./assets/img/triangle-small-1.png);
+		}
+	}
+
+	.tabs {
+		max-width: 608px;
+
+		&__nav {
+			margin-bottom: 26px;
+    		display: flex;
+    		gap: 24px;
+    		position: relative;
+
+			&:before {
+				content: "";
+				position: absolute;
+				background-color: $gray-lighter;
+				bottom: 0;
+				left: 0;
+				width: 262px;
+				height: 1px;
+				z-index: -1;
+			}
+		}
+
+		&__button {
+			font-family: $font-primary;
+			font-size: 15px;
+			color: $gray-light;
+			font-weight: 600;
+			border: none;
+			background-color: transparent;
+
+			&.active {
+				color: $red-accent;
+				border-bottom: 2px solid;
+			}
+		}
+
+		&__content {
+			margin-bottom: 60px;
+			display: none;
+
+			&.active {
+				display: block;
+			}
+
+			h2 {
+				line-height: 77.5px;
+    			margin-bottom: 24px;
+			}
+
+			p {
+				color: $gray-dark;
+				line-height: 28px;
+				max-width: 438px;
+			}
+		}
+
+		&__buttons {
+			gap: 24px;
+			display: flex;
+		}
+	}
+
+	&__img {
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			background-image: url(./assets/img/triangle-small-2.png);
+			top: 302px;
+    		left: -12px;
+			width: 40px;
+			height: 40px;
+		}
+	}
+}

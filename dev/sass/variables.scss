@@ -8,3 +8,14 @@ $font-size: 16px;
 $body-bg: #fff;
 $red-accent: #B00000;
 $color-black: #000;
+
+$gray-light: #D6D4D4;
+$gray-lighter: #e5e5e5;
+$gray-dark:#808080;
+
+
+@mixin red-accent-button {
+	background-color: $red-accent;
+	border: none;
+	color: $body-bg;
+}

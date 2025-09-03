@@ -29,6 +29,10 @@ const htmlbeautify = require('gulp-html-beautify');
 const spritesmith = require('gulp.spritesmith');
 const merge = require('merge-stream');
 const buffer = require('vinyl-buffer');
+const babel = require('gulp-babel');
+const source = require('vinyl-source-stream');
+const browserify = require('browserify');
+const babelify = require('babelify');
 
 // ЗАДАЧА: Компиляция препроцессора
 gulp.task('sass', function(){
@@ -181,6 +185,33 @@ gulp.task('copyJS', function() {
     .pipe(gulp.dest('build' + '/assets/js'));
 });
 
+// ЗАДАЧА: Компиляция JavaScript и React-кода
+gulp.task('scripts', () => {
+	// 1. Указываем Browserify, какой файл будет главным (входной точкой)
+	return browserify({
+		entries: dirs.source + '/assets/js/index.js', // <-- Вот главный файл
+		debug: true // Включаем Sourcemaps
+	})
+	// 2. Добавляем Babel для обработки кода
+	.transform(babelify.configure({
+		presets: ['@babel/preset-env', '@babel/preset-react']
+	}))
+	// 3. Собираем всё вместе в один файл
+	.bundle()
+	// 4. Обрабатываем ошибки
+	.on('error', err => {
+		console.log(err.toString());
+		this.emit('end');
+	})
+	// 5. Преобразуем поток Browserify в поток Gulp
+	.pipe(source('bundle.js'))
+	.pipe(buffer())
+	// 6. Минифицируем код
+	.pipe(uglify())
+	// 7. Сохраняем готовый файл
+	.pipe(gulp.dest('build/js'));
+});
+
 // ЗАДАЧА: Сборка PHP
 gulp.task('php', function() {
     return gulp.src(dirs.source + '/**/**/**/*.php') // какие файлы обрабатывать (путь из константы, маска имени)
@@ -199,7 +230,7 @@ gulp.task('copy-css', function() {
 gulp.task('build', gulp.series( // последовательно:
     'clean', // последовательно: очистку папки сборки
     'svgstore',
-    gulp.parallel('sass', 'img', 'images', 'imguploads', 'copyFonts', 'copyCSS', 'copyJS'),
+    gulp.parallel('sass', 'img', 'images', 'imguploads', 'copyFonts', 'copyCSS', 'copyJS', 'scripts'),
     'html',
     'php'
     // последовательно: сборку разметки
@@ -245,7 +276,7 @@ gulp.task('serve', gulp.series('build', function() {
         dirs.source + '/assets/img/*.{gif,png,jpg,jpeg,svg}',
         gulp.series('img', reloader) // при изменении оптимизируем, копируем и обновляем в браузере
     );
-    
+
     gulp.watch( // следим за SVG
         dirs.source + '/assets/images/svg-sprite/*.svg',
         gulp.series('svgstore', 'html', reloader)
@@ -254,7 +285,7 @@ gulp.task('serve', gulp.series('build', function() {
         dirs.source + '/assets/images/*.{gif,png,jpg,jpeg,svg}',
         gulp.series('img', reloader) // при изменении оптимизируем, копируем и обновляем в браузере
     );
-    
+
     gulp.watch( // следим за изображениями
         [
             dirs.source + '/uploads/**/*.{gif,png,jpg,jpeg,svg}',
@@ -264,7 +295,7 @@ gulp.task('serve', gulp.series('build', function() {
     );
     gulp.watch( // следим за JS
         dirs.source + '/assets/js/*.js',
-        gulp.series('copyJS', reloader) // при изменении пересобираем и обновляем в браузере
+        gulp.series('scripts', reloader) // Теперь запускаем 'scripts'
     );
 }));
 
@@ -298,3 +329,4 @@ var onError = function(err) {
     })(err);
     this.emit('end');
 };
+
