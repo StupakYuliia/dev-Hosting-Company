@@ -1,7 +1,7 @@
 'use strict';
 const dirs = {
-    source: 'dev',  // папка с исходниками (путь от корня проекта)
-    build: 'build', // папка с результатом работы (путь от корня проекта)
+    source: 'dev',
+    build: 'build',
 };
 
 // Определим необходимые инструменты
@@ -24,7 +24,7 @@ const svgmin = require('gulp-svgmin');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const cleanCSS = require('gulp-cleancss');
-const include = require('gulp-file-include'); //include
+const include = require('gulp-file-include');
 const htmlbeautify = require('gulp-html-beautify');
 const spritesmith = require('gulp.spritesmith');
 const merge = require('merge-stream');
@@ -187,29 +187,28 @@ gulp.task('copyJS', function() {
 
 // ЗАДАЧА: Компиляция JavaScript и React-кода
 gulp.task('scripts', () => {
-	// 1. Указываем Browserify, какой файл будет главным (входной точкой)
-	return browserify({
-		entries: dirs.source + '/assets/js/index.js', // <-- Вот главный файл
-		debug: true // Включаем Sourcemaps
-	})
-	// 2. Добавляем Babel для обработки кода
-	.transform(babelify.configure({
-		presets: ['@babel/preset-env', '@babel/preset-react']
-	}))
-	// 3. Собираем всё вместе в один файл
-	.bundle()
-	// 4. Обрабатываем ошибки
-	.on('error', err => {
-		console.log(err.toString());
-		this.emit('end');
-	})
-	// 5. Преобразуем поток Browserify в поток Gulp
-	.pipe(source('bundle.js'))
-	.pipe(buffer())
-	// 6. Минифицируем код
-	.pipe(uglify())
-	// 7. Сохраняем готовый файл
-	.pipe(gulp.dest('build/js'));
+    // 1. Указываем Browserify, какой файл будет главным (входной точкой)
+    // index.js, который монтирует App.js в HTML
+    return browserify({
+        entries: dirs.source + '/assets/js/index.js',
+        debug: true
+    })
+    // 2. Используем babelify для обработки React-кода
+    .transform(babelify.configure({
+        presets: ['@babel/preset-env', '@babel/preset-react']
+    }))
+    .bundle()
+    .on('error', err => {
+        console.error(err.toString());
+        this.emit('end');
+    })
+    // 3. Преобразуем поток Browserify в поток Gulp
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    // 4. Минифицируем код
+    .pipe(uglify())
+    // 5. Сохраняем готовый файл
+    .pipe(gulp.dest('build/js'));
 });
 
 // ЗАДАЧА: Сборка PHP
