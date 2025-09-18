@@ -28,7 +28,7 @@
 	}
 
 	.tabs {
-		max-width: 608px;
+		max-width: $banner-tabs-max-width;
 
 		&__nav {
 			margin-bottom: 26px;
@@ -55,6 +55,7 @@
 			font-weight: 600;
 			border: none;
 			background-color: transparent;
+			cursor: pointer;
 
 			&.active {
 				color: $red-accent;
@@ -78,7 +79,7 @@
 			p {
 				color: $gray-dark;
 				line-height: 28px;
-				max-width: 438px;
+				max-width: $banner-tabs-content-p-max-width;
 			}
 		}
 

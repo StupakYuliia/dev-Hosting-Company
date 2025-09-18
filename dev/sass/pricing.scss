@@ -1,0 +1,172 @@
+.pricing {
+	h3 {
+		max-width: $pricing-h3-max-width;
+		text-align: center;
+		margin: 0 auto 38px;
+		font-size: 50px;
+		font-weight: 600;
+		line-height: 60px;
+	}
+
+	h5 {
+		font-size: 26px;
+		font-weight: 400;
+		text-align: center;
+		margin-bottom: 56px;
+	}
+
+	&__toggle {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 70px;
+		gap: 26px;
+
+		&-monthly,
+		&-yearly {
+		font-size: 26px;
+		}
+
+		&-switch {
+			input {
+				display: none;
+
+				&:checked + .pricing__toggle-slider {
+					background-color: $body-bg;
+					border: 1px solid $red-accent;
+
+					&:before {
+						transform: translate(42px, -14px);
+						background-color: $red-accent;
+						transition: 0.3s;
+					}
+				}
+			}
+		}
+
+
+		&-slider {
+			width: 93px;
+			height: 50px;
+			display: block;
+			background-color: $red-accent;
+			border-radius: 74px;
+			position: relative;
+
+			&:before {
+				position: absolute;
+				content: "";
+				top: 50%;
+				left: 10px;
+				width: 30px;
+				height: 30px;
+				background-color: $body-bg;
+				border-radius: 50px;
+				transform: translate(0px, -50%);
+				transition: 0.3s;
+			}
+		}
+
+		&-discount {
+			background-color: $yellow-accent;
+			border-radius: 8px;
+			padding: 8px;
+			font-size: 10px;
+			font-weight: 500;
+		}
+	}
+
+	.tabs {
+		&__nav {
+			display: flex;
+			max-width: $pricing-tabs-max-width;
+			margin: 0 auto 86px;
+		}
+
+		&__button {
+			font-size: 30px;
+			font-weight: 600;
+			border: none;
+			background-color: transparent;
+			width: 50%;
+			line-height: 40px;
+			border-bottom: 4px solid $gray-light;
+			cursor: pointer;
+
+			&.active {
+				border-bottom: 4px solid $red-accent;
+			}
+		}
+
+		&__content {
+			display: none;
+
+		    &.active {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			&-card {
+				max-width: $pricing-tabs-content-card-max-width;
+    			border: 2px solid $gray-light;
+    			border-radius: $radius-lg;
+    			padding: 34px 34px 48px;
+
+				h4 {
+					font-size: 28px;
+					font-weight: 600;
+					margin-bottom: 10px;
+				}
+
+				p {
+					font-size: 12px;
+					line-height: 18px;
+					margin-bottom: 28px;
+				}
+
+				button {
+					font-size: 14px;
+    				font-weight: 600;
+    				padding: 10px 52px;
+    				border: 2px solid;
+    				border-radius: $radius-md;
+    				cursor: pointer;
+					background-color: transparent;
+    				margin-bottom: 36px;
+					@include button-hover-effect;
+				}
+
+				li {
+					font-family: $font-secondary;
+					font-weight: 700;
+					color: $gray-dark;
+					margin-bottom: 16px;
+					display: flex;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+
+					img {
+						margin-right: 24px;
+						width: 24px;
+						height: 24px;
+					}
+				}
+			}
+
+			&-price {
+				font-size: 42px;
+				font-weight: 600;
+				margin-bottom: 36px;
+
+				span {
+					font-size: 14px;
+					font-weight: 300;
+					display: block;
+				}
+			}
+		}
+	}
+}
+
