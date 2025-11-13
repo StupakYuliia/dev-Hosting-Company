@@ -7,22 +7,6 @@
 		margin-bottom: 118px;
 	}
 
-	.content-block {
-		max-width: $why-us-content-block-max-width;
-
-		h3 {
-			font-family: $font-secondary;
-			font-weight: 800;
-			line-height: 64px;
-		}
-
-		p {
-			font-family: $font-secondary;
-			font-size: 18px;
-			line-height: 32px;
-		}
-	}
-
 	&__images {
 		display: flex;
 		max-width: $why-us-content-block-images-max-width;
