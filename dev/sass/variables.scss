@@ -16,10 +16,11 @@ $body-bg: #fff;
 $red-accent: #B00000;
 $yellow-accent: #FFE87A;
 $color-black: #000;
-
 $gray-light: #D6D4D4;
 $gray-lighter: #e5e5e5;
 $gray-dark:#808080;
+$gray-cta-h2:#2E2E2E;
+$cta-container-background:#F7FAFE;
 
 
 ///border-radius///
@@ -79,4 +80,25 @@ $testimonials-logo-images-max-width: 490px;
 	&:hover {
 		color: $body-bg;
 	}
+}
+
+@mixin decoration-big-triangle {
+	content: "";
+	position: absolute;
+	top: 390px;
+    right: -12px;
+	width: 72px;
+    height: 72px;
+	background-image: url(./assets/img/triangle-big.png);
+	z-index: 1;
+}
+
+@mixin decoration-small-triangle {
+	content: "";
+	position: absolute;
+	top: 62px;
+	right: -12px;
+	width: 40px;
+	height: 40px;
+	background-image: url(./assets/img/triangle-small.png);
 }

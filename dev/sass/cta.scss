@@ -1,0 +1,49 @@
+.cta {
+	.container {
+		background-color: $cta-container-background;
+		padding: 80px 90px 88px 118px;
+		border-radius: $radius-xl;
+		display: flex;
+   		flex-direction: column;
+   		align-items: center;
+		position: relative;
+
+		&::before {
+			@include decoration-big-triangle;
+    		right: -26px;
+			top: 320px;
+		}
+
+		&::after {
+			@include decoration-small-triangle;
+			top: 0;
+    		right: 724px;
+		}
+	}
+
+	h2 {
+		text-align: center;
+		margin-bottom: 40px;
+		position: relative;
+		font-weight: 600;
+    	color: $gray-cta-h2;
+
+		&::before {
+			@include decoration-small-triangle;
+			top: 224px;
+    		left: -132px;
+			transform: rotate(90deg);
+		}
+	}
+
+	a {
+		display: inline-flex;
+		max-width: 208px;
+
+		.icon-svg {
+			width: 22px;
+			height: 22px;
+			margin-right: 10px;
+		}
+	}
+}

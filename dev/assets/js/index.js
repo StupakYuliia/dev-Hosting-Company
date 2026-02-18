@@ -3,6 +3,7 @@ import * as ReactDOMClient from "react-dom/client"
 import App from './App'
 import ContentBlock from '../../components/ContentBlock'
 import {initAppLogic} from "./init"
+import Cta from "./Cta"
 
 document.addEventListener('DOMContentLoaded', () => {
     const app = ReactDOMClient.createRoot(document.getElementById("app"))
@@ -26,3 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		text="Connect LemonWares with your favourite tools that you use daily and keep things on track."
 	/>)
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+	const cta = ReactDOMClient.createRoot(document.getElementById("cta"))
+	cta.render(<Cta/>)
+})
+
+
