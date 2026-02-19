@@ -52,6 +52,59 @@ a {
 	display: none;
 }
 
+.btn-burger {
+	@include size-btn-burger;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	background-color: transparent;
+	border-radius: 0;
+	display: none;
+	position: relative;
+
+	span {
+		height: 3px;
+		width: 100%;
+		display: block;
+		background-color: $red-accent;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			height: 3px;
+			width: 100%;
+			background-color: $red-accent;
+			top: -1px;
+			left: 0;
+			transition: 0.3s;
+		}
+
+		&::after {
+			top: initial;
+			bottom: -1px;
+		}
+	}
+
+	&.active {
+		span {
+			background-color: transparent;
+			position: fixed;
+			@include size-btn-burger;
+
+			&:before,
+			&:after {
+				transform: rotate(45deg) translate(8px, 8px);
+				background-color: $red-accent;
+			}
+
+			&:after {
+				transform: rotate(-45deg) translate(8px, -8px);
+			}
+		}
+	}
+}
+
 .custom-button {
     font-size: $btn-font-size;
     padding: 12px 18px;

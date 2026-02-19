@@ -1,36 +1,53 @@
-// Находим чекбокс и все элементы с ценами
-const toggleCheckbox = document.getElementById('pricing__toggle-checkbox');
-const priceElements = document.querySelectorAll('.tabs__content-price');
+export const updatePrices = () => {
+  const toggle = document.getElementById('pricing__toggle-checkbox');
+  const prices = document.querySelectorAll('.tabs__content-price');
 
-// Функция для обновления цен
-export function updatePrices() {
-	const isYearly = toggleCheckbox.checked;
-  	const discount = 0.8; // 20% скидка
+  if (!toggle || !prices.length) return;
 
-	priceElements.forEach(priceElement => {
-    // Получаем месячную цену, которую добавляем в HTML как data-атрибут
-    const monthlyPrice = parseFloat(priceElement.dataset.monthlyPrice);
+  const isYearly = toggle.checked;
+  prices.forEach(el => {
+    const base = parseFloat(el.dataset.monthlyPrice);
+    if (isNaN(base)) return;
 
-    let newPrice;
-    let periodText;
+    const finalPrice = isYearly ? (base * 12 * 0.8).toFixed(2) : base.toFixed(2);
+    const text = isYearly ? 'Per year' : 'Per month';
 
-    if (isYearly) {
-      // Вычисляем годовую цену с 20% скидкой
-    	newPrice = (monthlyPrice * 12 * discount).toFixed(2);
-		periodText = 'Per year';
-    } else {
-      // Возвращаем месячную цену
-    	newPrice = monthlyPrice.toFixed(2);
-    	periodText = 'Per month';
+    el.innerHTML = `${finalPrice}<span>${text}</span>`;
+  });
+};
+
+// 2. Привязываем к window для глобального доступа
+window.updatePrices = updatePrices;
+
+(function() {
+  const initBurger = () => {
+    const btn = document.querySelector('.btn-burger');
+    const nav = document.querySelector('.header-nav');
+    if (btn && nav) {
+      btn.onclick = () => {
+        nav.classList.toggle('show');
+        btn.classList.toggle('active');
+      };
     }
+  };
 
-    // Обновляем текст внутри элемента с ценой
-    priceElement.innerHTML = `$${newPrice}<span>${periodText}</span>`;
-	});
-}
+  // Инициализация бургера
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBurger);
+  } else {
+    initBurger();
+  }
 
-// Добавляем слушатель события на изменение состояния чекбокса
-toggleCheckbox.addEventListener('change', updatePrices);
+  // Инициализация цен
+  try {
+    const toggle = document.getElementById('pricing__toggle-checkbox');
+    if (toggle) {
+      // Используем экспортированную функцию
+      toggle.addEventListener('change', updatePrices);
+      updatePrices();
+    }
+  } catch (e) {
 
-// Вызываем функцию один раз при загрузке страницы для установки начальных цен
-updatePrices();
+  }
+})();
+

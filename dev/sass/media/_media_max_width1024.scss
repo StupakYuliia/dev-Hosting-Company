@@ -1,4 +1,51 @@
 @media screen and (max-width: 1024px) {
+	header {
+		.btn-burger {
+			display: block;
+			z-index: 100;
+		}
+
+		.header-logo {
+			margin-left: auto;
+		}
+
+		.header-nav {
+			display: flex !important;
+			flex-direction: column;
+			position: fixed;
+			top: 0;
+			right: -100%;
+			width: 100%;
+			background-color: $color-black;
+			gap: 24px;
+			padding: 120px 48px 48px;
+			z-index: 15;
+			transition: right 0.5s ease-in-out;
+			grid-template-columns: none;
+
+			&::before {
+			display: none;
+			}
+
+			&.show {
+			right: 0;
+			display: flex;
+			visibility: visible;
+			opacity: 1;
+			}
+
+			&__link {
+			color: $body-bg;
+			font-size: 20px;
+
+				&:hover {
+					color: $red-accent;
+				}
+
+				span::after {
+					display: none;
+				}
+			}
+		}
+	}
 }
-
-
