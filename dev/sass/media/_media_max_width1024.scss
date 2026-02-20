@@ -1,12 +1,16 @@
 @media screen and (max-width: 1024px) {
+	body {
+		font-size: 12px;
+	}
+
 	header {
-		.btn-burger {
-			display: block;
-			z-index: 100;
-		}
+		margin: 28px 0 40px;
 
 		.header-logo {
 			margin-left: auto;
+			img {
+				width: 70px;
+			}
 		}
 
 		.header-nav {
@@ -18,7 +22,7 @@
 			width: 100%;
 			background-color: $color-black;
 			gap: 24px;
-			padding: 120px 48px 48px;
+			padding: 54px 40px 40px;
 			z-index: 15;
 			transition: right 0.5s ease-in-out;
 			grid-template-columns: none;
@@ -36,7 +40,7 @@
 
 			&__link {
 			color: $body-bg;
-			font-size: 20px;
+			font-size: 14px;
 
 				&:hover {
 					color: $red-accent;
@@ -45,6 +49,92 @@
 				span::after {
 					display: none;
 				}
+			}
+		}
+	}
+
+	h2 {
+		font-size: 30px;
+	}
+
+	.custom-button {
+		font-size: 10px;
+		padding: 10px 16px;
+		border-radius: 4px;
+	}
+
+	.btn-burger {
+		width: 30px;
+		height: 20px;
+		display: block;
+		z-index: 100;
+
+		&.active {
+			span {
+				width: 30px;
+				height: 24px;
+			}
+		}
+	}
+
+	.banner {
+		margin-bottom: 40px;
+
+		.container {
+			&::before,
+			&::after {
+				content: none;
+			}
+		}
+
+		.tabs {
+			max-width: 450px;
+			margin: 0 auto;
+
+			&__nav {
+				margin-bottom: 130px;
+				gap: 16px;
+				justify-content: center;
+			}
+
+			&__button {
+				font-size: 12px;
+			}
+
+			&__content {
+				margin-bottom: 30px;
+
+				h2 {
+					line-height: 41.5px;
+					margin-bottom: 13px;
+					text-align: center;
+				}
+
+				p {
+					line-height: 23px;
+					text-align: center;
+				}
+			}
+
+			&__buttons {
+				gap: 18px;
+				justify-content: center;
+			}
+		}
+
+		&__img {
+			position: absolute;
+			top: 34px;
+			left: 50%;
+			transform: translate(-50%, 0);
+
+			&::before {
+				content: none;
+			}
+
+			img {
+				width: 126px;
+				height: 108px;
 			}
 		}
 	}
