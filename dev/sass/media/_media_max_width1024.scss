@@ -63,6 +63,14 @@
 		text-align: center;
 	}
 
+	h4 {
+		font-style: 22px;
+	}
+
+	h5 {
+		font-style: 20px;
+	}
+
 	.custom-button {
 		font-size: 10px;
 		padding: 10px 16px;
@@ -120,7 +128,7 @@
 
 				h2 {
 					line-height: 41.5px;
-					margin-bottom: 13px;
+					margin-bottom: 14px;
 					text-align: center;
 				}
 
@@ -181,6 +189,73 @@
 
 		&__card {
 			max-width: 180px;
+		}
+	}
+
+	.pricing {
+		h3 {
+			margin: 0 auto 14px;
+			font-size: 26px;
+			line-height: 36px;
+		}
+
+		h5 {
+			font-size: 20px;
+			margin-bottom: 24px;
+		}
+
+		&__toggle-slider {
+			width: 66px;
+			height: 33px;
+
+			&:before {
+				left: 10px;
+				width: 22px;
+				height: 22px;
+				transform: translate(0px, -50%);
+			}
+		}
+
+		&__toggle {
+			margin-bottom: 24px;
+			gap: 16px;
+
+			&-monthly,
+			&-yearly {
+			font-size: 22px;
+			}
+
+			&-switch {
+				input {
+					&:checked + .pricing__toggle-slider {
+						&:before {
+							transform: translate(26px, -11px);
+						}
+					}
+				}
+			}
+		}
+
+		&__toggle-discount {
+			font-size: 8px;
+		}
+
+		.tabs__nav {
+			margin-bottom: 24px;
+			max-width: 304px;
+			.tabs__button {
+				font-size: 24px;
+			}
+		}
+
+		.tabs__content {
+			overflow-x: auto;
+			max-width: 304px;
+			margin: 0 auto;
+
+			&-card {
+				min-width: 304px;
+			}
 		}
 	}
 }
