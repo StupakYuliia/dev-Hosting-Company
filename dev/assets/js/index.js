@@ -13,6 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
+	const testimonialsRroot = ReactDOMClient.createRoot(document.getElementById("testimonials-cards-slider"))
+	testimonialsRroot.render(<ContentBlock
+		title="Real Stories from Real Customers"
+		text="Get inspired by these stories."
+	/>)
+})
+
+document.addEventListener('DOMContentLoaded', () => {
 	const testimonialsRroot = ReactDOMClient.createRoot(document.getElementById("testimonials-cards"))
 	testimonialsRroot.render(<ContentBlock
 		title="Real Stories from Real Customers"

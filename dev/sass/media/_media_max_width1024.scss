@@ -61,6 +61,7 @@
 	h3 {
 		font-size: 26px;
 		text-align: center;
+		line-height: 41.5px !important;
 	}
 
 	h4 {
@@ -69,6 +70,11 @@
 
 	h5 {
 		font-style: 20px;
+	}
+
+	.container {
+		max-width: 330px;
+		margin: 0 auto;
 	}
 
 	.custom-button {
@@ -193,6 +199,7 @@
 	}
 
 	.pricing {
+		margin-bottom: 40px;
 		h3 {
 			margin: 0 auto 14px;
 			font-size: 26px;
@@ -242,7 +249,6 @@
 
 		.tabs__nav {
 			margin-bottom: 24px;
-			max-width: 304px;
 			.tabs__button {
 				font-size: 24px;
 			}
@@ -250,12 +256,31 @@
 
 		.tabs__content {
 			overflow-x: auto;
-			max-width: 304px;
-			margin: 0 auto;
 
 			&-card {
 				min-width: 304px;
 			}
+		}
+	}
+
+	.testimonials {
+		margin-bottom: 40px;
+
+		&__grid {
+			display: none;
+		}
+
+		.carousel {
+			display: block !important;
+		}
+
+		&__logos {
+			flex-direction: column;
+		}
+
+		&__logo-images {
+			gap: 0;
+			justify-content: space-between;
 		}
 	}
 }
