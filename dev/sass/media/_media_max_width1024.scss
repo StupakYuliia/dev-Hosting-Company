@@ -283,4 +283,49 @@
 			justify-content: space-between;
 		}
 	}
+
+	.cta {
+		margin-bottom: 40px;
+		h2 {
+			min-width: 304px;
+			margin-bottom: 24px;
+
+			&:before {
+				width: 30px;
+				height: 30px;
+				top: 130px;
+        		left: -22px;
+			}
+		}
+
+		a {
+			.icon-svg {
+				width: 16px;
+				height: 16px;
+				margin-right: 6px;
+			}
+		}
+
+		.container {
+			padding: 60px 90px 60px 90px;
+
+			&:before {
+				top: 214px;
+        		right: -10px;
+				width: 52px;
+        		height: 52px;
+			}
+
+			&:after {
+				width: 30px;
+				height: 30px;
+				top: -10px;
+        		right: 194px;
+			}
+		}
+
+		.custom-button {
+			padding: 8px 9px;
+		}
+	}
 }
