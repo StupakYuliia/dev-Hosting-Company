@@ -55,7 +55,7 @@ $testimonials-logo-images-max-width: 490px;
 
 @mixin red-accent-button {
 	background-color: $red-accent;
-	border: none;
+	border-color: transparent;
 	color: $body-bg;
 }
 
